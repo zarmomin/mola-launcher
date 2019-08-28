@@ -10,6 +10,18 @@
 find_package(mrpt-core)
 find_package(mrpt-tclap) # tclap wrapper, useful for Windows, etc.
 
+FIND_PACKAGE(PkgConfig REQUIRED)
+
+find_package(yaml_cpp_catkin QUIET)
+if(${yaml_cpp_catkin_FOUND})
+  message(STATUS "Found yaml_cpp_catkin, using instead of system library.")
+  set(YamlCpp_LIBRARIES ${yaml_cpp_catkin_LIBRARIES})
+  set(YamlCpp_INCLUDE_DIRS ${yaml_cpp_catkin_INCLUDE_DIRS})
+else()
+  message(STATUS "No yaml_cpp_catkin, using yaml-cpp system library instead.")
+  pkg_check_modules(YamlCpp REQUIRED yaml-cpp>=0.5)
+endif()
+
 mola_add_executable(
 	TARGET  mola-cli
 	SOURCES mola-cli.cpp
