@@ -10,7 +10,7 @@
 find_package(mrpt-core)
 find_package(mrpt-tclap) # tclap wrapper, useful for Windows, etc.
 
-message(WARNING "${YamlCpp_LIBRARIES")
+message(ERROR "${YamlCpp_LIBRARIES")
 
 mola_add_executable(
 	TARGET  mola-cli
