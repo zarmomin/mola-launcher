@@ -17,7 +17,7 @@ mola_add_executable(
 		mola-launcher
 		mrpt::core
 		mrpt::tclap
-		yaml-cpp
+		${YamlCpp_LIBRARIES}
 )
 
 mola_add_executable(
