@@ -182,9 +182,9 @@ void MolaLauncherApp::setup(const YAML::Node& cfg_in)
         // Create each module instance in this section:
         for (const auto& ds : cfg_blk)
         {
-            ENSURE_YAML_ENTRY_EXISTS(ds, "type");
-            ENSURE_YAML_ENTRY_EXISTS(ds, "name");
-            ENSURE_YAML_ENTRY_EXISTS(ds, "params");
+            ensureYamlEntryExists(ds, "type");
+            ensureYamlEntryExists(ds, "name");
+            ensureYamlEntryExists(ds, "params");
 
             // Allow quickly disabling sections:
             if (ds["launch_ignore"] && ds["launch_ignore"].as<bool>()) continue;
